@@ -23,6 +23,7 @@ function App() {
     })
     if(response.data == true){
       alert("Se ha Guardado")
+      window.location.reload()
     }else{
       alert("Ocurrio un error ")
     }
