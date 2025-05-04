@@ -13,14 +13,19 @@ function Modal() {
     const updateRadio = async()=>{
 
       const response = await radioService.uodateRadio({
-        id: radio.data.id,
+        id: radio.id,
         data: {
           nombre: nombre,
           url: url,
           imagen: imagen
         }
       })
-      console.log(response)
+      if(response.data == true){
+        alert("Radio actualizada")
+        closeModal()
+      }else{
+        alert("Error al actualizar la radio")
+      }
       
     }
   return (
