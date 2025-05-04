@@ -31,6 +31,10 @@ function App() {
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "justifyContent": "center",
       }}
       noValidate
       autoComplete="off"
@@ -54,7 +58,7 @@ function App() {
                   style={{background: "white"}} 
                   onChange={(e)=> setImagen(e.target.value)}
         />
-        <div>
+        <div style={{width: "100%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-arround"}}>
          <FormLabel style={{color: "white", fontWeight: "bold"}}>Categoria</FormLabel>
                 <Select
           labelId="demo-simple-select-label"
@@ -63,6 +67,12 @@ function App() {
           label="Categoria"
           onChange={(event)=> setCategoria(event.target.value)}
           style={{background: "white", color: "black"}}
+          sx={{
+              "color": "black"
+          }}
+          InputLabelProps={{
+            style: { color: "black" }, // Cambia el color de la etiqueta aquí
+          }}
         >
           <MenuItem value={"varios"}>Varios</MenuItem>
           <MenuItem value={"catolica"}>Catolica</MenuItem>

@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { radioService } from '../services/radios.service'
 import RadioCard from '../components/RadioCard'
+import { TextField } from '@mui/material'
 
 function Edit() {
     const [radios, setRadios]= useState([])
+    const [filtro, setFiltro] = useState()
+    const [filtrada, setFiltrada] = useState();
     const getDataRadios = async()=>{
         const response = await radioService.getRadios()
+        
         setRadios(response)
         console.log("Carga completa")
     }
@@ -14,11 +18,29 @@ function Edit() {
             getDataRadios()
         }
     },[])
+    useEffect(()=>{
+        console.log("Filtro",filtrada)
+        if(filtro != undefined && filtro.length > 0){
+            const f = radios.filter((item) => item.data.nombre.toLowerCase().includes(filtro.toLowerCase()))
+            setFiltrada(f)
+        }
+    },[filtro])
   return (
     <div>
         <h2>Editar Radios</h2>
+        <div>
+            <TextField  id="outlined-basic"
+                        label="Nombre" 
+                        variant="outlined" 
+                        style={{background: "white"}} 
+                        onChange={(e)=> setFiltro(e.target.value)}
+                        />
+        </div>
         {
-            radios.length > 0 && radios.map(item => <RadioCard data={item} />)
+            radios.length > 0 && filtro == undefined  && radios.map(item => <RadioCard data={item} key={item.id}/> )
+        }
+                {
+            filtrada != undefined && filtrada.length > 0 && filtrada.map(item => <RadioCard data={item} key={item.id}/>)
         }
     </div>
   )
