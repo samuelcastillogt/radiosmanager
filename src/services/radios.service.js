@@ -5,7 +5,9 @@ class RadioService{
     saveRadio = async(data)=>{
         return await axios.post(serverURL + "api/radio", data)
     }
-
+    uodateRadio = async(data)=>{
+        return await axios.post(serverURL + "api/radio/update", data)
+    }
     getRadios = async()=>{
         const response = await axios.get(serverURL + "api/radios")
         return  response.data
