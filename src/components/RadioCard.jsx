@@ -23,18 +23,6 @@ function RadioCard(props) {
             <button>Eliminar</button>
         </div>
     </div>
-    {/* {
-      modal == true &&     <div>
-      <h4>Datos</h4>
-      <p>Nombre: {data.data.nombre}</p>
-      <p>Categoria: {data.data.categoria}</p>
-      <p>URL: {data.data.url}</p>
-      <p>Imagen: {data.data.imagen}</p>
-      <p>Descripcion: {data.data.descripcion}</p>
-      <button onClick={()=> UpdateRadio(data)}>Actualizar</button>
-      <button onClick={()=> setModal(false)}>cancelar</button>
-  </div>
-    } */}
 
     </>
 

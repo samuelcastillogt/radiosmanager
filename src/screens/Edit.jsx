@@ -19,10 +19,13 @@ function Edit() {
         }
     },[])
     useEffect(()=>{
-        console.log("Filtro",filtrada)
+        console.log("Filtro",filtro)
         if(filtro != undefined && filtro.length > 0){
             const f = radios.filter((item) => item.data.nombre.toLowerCase().includes(filtro.toLowerCase()))
             setFiltrada(f)
+        }else{
+            setFiltrada(undefined)
+            setFiltro(undefined)
         }
     },[filtro])
   return (
