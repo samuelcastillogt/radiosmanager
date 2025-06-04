@@ -4,6 +4,8 @@ import RadioCard from '../components/RadioCard'
 import { TextField } from '@mui/material'
 
 function Edit() {
+    const [loader, setloader]= useState(true)
+
     const [radios, setRadios]= useState([])
     const [filtro, setFiltro] = useState()
     const [filtrada, setFiltrada] = useState();
@@ -11,11 +13,12 @@ function Edit() {
         const response = await radioService.getRadios()
         
         setRadios(response)
+        setloader(false)
         console.log("Carga completa")
     }
     useEffect(()=>{
         if(radios.length == 0){
-            getDataRadios()
+            getDataRadios();
         }
     },[])
     useEffect(()=>{
@@ -39,6 +42,9 @@ function Edit() {
                         onChange={(e)=> setFiltro(e.target.value)}
                         />
         </div>
+        {
+            loader && <p>Cargando...</p>
+        }	
         {
             radios.length > 0 && filtro == undefined  && radios.map(item => <RadioCard data={item} key={item.id}/> )
         }

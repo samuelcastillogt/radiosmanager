@@ -9,7 +9,7 @@ import { radioService } from '../services/radios.service';
 function App() {
   const [nombre, setNombre] = useState(0)
   const [url, setUrl] = useState(0)
-  const [imagen, setImagen] = useState(0)
+  const [imagen, setImagen] = useState("")
   const [categoria, setCategoria] = useState();
   const saveRadio = async(data)=>{
     const response = await radioService.saveRadio({
@@ -52,13 +52,20 @@ function App() {
                   style={{background: "white"}} 
                   onChange={(e)=> setUrl(e.target.value)}
         />
+                {
+          imagen && imagen.length > 0 &&
+          <div>
+            <img src={imagen} alt="" style={{width: "100px", height: "100px", borderRadius: "100%"}} />
+          </div>
+        }
               <TextField  id="outlined-basic" 
                   label="Imagen" 
                   variant="outlined" 
                   style={{background: "white"}} 
                   onChange={(e)=> setImagen(e.target.value)}
-        />
-        <div style={{width: "100%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-arround"}}>
+        /> 
+
+        <div style={{width: "100%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
          <FormLabel style={{color: "white", fontWeight: "bold"}}>Categoria</FormLabel>
                 <Select
           labelId="demo-simple-select-label"
@@ -81,7 +88,7 @@ function App() {
         </Select>         
         </div>
 
-        <Button variant="contained" onClick={saveRadio}>Guardar</Button>
+        <Button variant="contained" onClick={saveRadio} disabled={!nombre || !url || !imagen || !categoria}>Guardar</Button>
     </Box>
     </>
   )
