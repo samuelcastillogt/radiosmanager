@@ -17,7 +17,7 @@ function App() {
       {
         modalStatus == true && <Modal />
       }
-      <div style={{display: "flex", flex: 1, backgroundColor:"black"}}>
+      <div style={{display: "flex", flex: 1}}>
         <Menu handleChangeMenu={handleChangeMenu} />
         <div style={{width: "80vw"}}>
           {

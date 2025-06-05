@@ -29,8 +29,8 @@ function Modal() {
       
     }
   return (
-    <div style={{position: "fixed", top: 0, left: 0, width: "100vw", height: "100%", backgroundColor: "rgba(0,0,0,0.5)", zIndex: 10}}>
-        <Button style={{position: "absolute", top: 10, right: 10, backgroundColor: "red", borderRadius: "100%", width: "30px", height: "30px", color: "white"}} onClick={()=> closeModal()}>X</Button>
+    <div style={{position: "fixed", top: 0, left: 0, width: "100vw", height: "100%", backgroundColor: "rgba(0,0,0,0.5)", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center"}}>
+       
         <Box
       component="form"
       sx={{
@@ -41,11 +41,13 @@ function Modal() {
         "justifyContent": "center",
         "backgroundColor": "white",
         width: "400px",
-        margin: "0 auto"
+        margin: "0 auto",
+        "position": "relative"
       }}
       noValidate
       autoComplete="off"
     >
+       <Button style={{position: "absolute", top: 10, right: 10, backgroundColor: "red", width: "30px", height: "30px", color: "white"}} onClick={()=> closeModal()}>X</Button>
         <h1>Editar Radio</h1>
       <TextField  id="outlined-basic" 
                   label="Nombre" 

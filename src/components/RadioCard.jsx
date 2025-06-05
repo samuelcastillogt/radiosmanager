@@ -20,7 +20,7 @@ function RadioCard(props) {
         </div>
         <div>
             <button onClick={()=> openModal(data)}>Editar</button>
-            <button>Eliminar</button>
+            <button className="danger">Eliminar</button>
         </div>
     </div>
 
